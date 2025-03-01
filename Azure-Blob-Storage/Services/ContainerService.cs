@@ -4,17 +4,17 @@ using Azure.Storage.Blobs.Models;
 
 namespace Azure_Blob_Storage.Services;
 
-public class ContainerService(BlobServiceClient _blobClient) : IContainerService
+public class ContainerService(BlobServiceClient _blobServiceClient) : IContainerService
 {
     public async Task CreateContainer(string containerName)
     {
-        var blobContainerClientResponse = _blobClient.GetBlobContainerClient(containerName);
+        var blobContainerClientResponse = _blobServiceClient.GetBlobContainerClient(containerName);
         await blobContainerClientResponse.CreateIfNotExistsAsync();
     }
 
     public Task DeleteContainer(string containerName)
     {
-        var blobContainerClientResponse = _blobClient.GetBlobContainerClient(containerName);
+        var blobContainerClientResponse = _blobServiceClient.GetBlobContainerClient(containerName);
         return blobContainerClientResponse.DeleteIfExistsAsync();
     }
 
@@ -22,7 +22,7 @@ public class ContainerService(BlobServiceClient _blobClient) : IContainerService
     {
         List<string> containerName = new();
 
-        await foreach (var containers in _blobClient.GetBlobContainersAsync())
+        await foreach (var containers in _blobServiceClient.GetBlobContainersAsync())
         {
             containerName.Add(containers.Name);
         }
@@ -33,13 +33,13 @@ public class ContainerService(BlobServiceClient _blobClient) : IContainerService
     public async Task<List<string>> GetAllContainerAndBlobs()
     {
         List<string> containerAndBlobNames = new();
-        containerAndBlobNames.Add("Account Name : " + _blobClient.AccountName);
+        containerAndBlobNames.Add("Account Name : " + _blobServiceClient.AccountName);
         containerAndBlobNames.Add("------------------------------------------------------------------------------------------------------------");
-        await foreach (BlobContainerItem blobContainerItem in _blobClient.GetBlobContainersAsync())
+        await foreach (BlobContainerItem blobContainerItem in _blobServiceClient.GetBlobContainersAsync())
         {
             containerAndBlobNames.Add("--" + blobContainerItem.Name);
             BlobContainerClient _blobContainer =
-                  _blobClient.GetBlobContainerClient(blobContainerItem.Name);
+                  _blobServiceClient.GetBlobContainerClient(blobContainerItem.Name);
             await foreach (BlobItem blobItem in _blobContainer.GetBlobsAsync())
             {
                 //get metadata
