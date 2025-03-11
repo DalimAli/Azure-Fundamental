@@ -21,18 +21,20 @@ public class ContainerController(IContainerService containerService) : Controlle
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateContainer(Container container)
+    public async Task<IActionResult> Create(Container container) 
     {
         await containerService.CreateContainer(container.Name);
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpPost]
     public async Task<IActionResult> Delete(string containerName)
     {
         await containerService.DeleteContainer(containerName);
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpGet]
     public async Task<IActionResult> GetAllContainerAndBlobs()
     {
         return View(await containerService.GetAllContainerAndBlobs());
