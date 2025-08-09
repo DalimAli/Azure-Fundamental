@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure-Blob-Storage", "Azure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionTangyApp", "AzureFunctionTangyApp\AzureFunctionTangyApp.csproj", "{96A921FB-AD69-4C4A-85E2-488891BEBBFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TangyAzureFunction", "TangyAzureFunction\TangyAzureFunction.csproj", "{0F4156AB-8FE8-4B44-8C4B-F46FA5EA8D86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{96A921FB-AD69-4C4A-85E2-488891BEBBFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96A921FB-AD69-4C4A-85E2-488891BEBBFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96A921FB-AD69-4C4A-85E2-488891BEBBFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4156AB-8FE8-4B44-8C4B-F46FA5EA8D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4156AB-8FE8-4B44-8C4B-F46FA5EA8D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4156AB-8FE8-4B44-8C4B-F46FA5EA8D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4156AB-8FE8-4B44-8C4B-F46FA5EA8D86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
